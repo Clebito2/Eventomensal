@@ -164,6 +164,7 @@
             <nav class="flex flex-wrap -mb-px space-x-4">
                 <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300 active" onclick="showTab('visaoGeral')">Visão Geral</button>
                 <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('timeline')">Linha do Tempo</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('marketing')">Marketing</button>
                 <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('staff')">Funções do Staff</button>
                 <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('jornadas')">Jornadas</button>
                 <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('roteiros')">Roteiros & Comunicação</button>
@@ -238,7 +239,37 @@
                 </div>
             </div>
 
-            <!-- ABA 3: FUNÇÕES DO STAFF -->
+            <!-- ABA 3: MARKETING -->
+            <div id="marketing" class="tab-content">
+                <div class="card p-8">
+                    <h2 class="text-3xl font-bold text-highlight mb-6">Plano de Marketing e Divulgação</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-2">Estratégia Central</h3>
+                            <p class="text-gray-300 font-serif">Nossa comunicação é focada em resolver a "dor" do nosso público-alvo, utilizando o tema do mês como solução. O objetivo é gerar autoridade, construir antecipação e criar um senso de urgência para a compra do ingresso.</p>
+                        </div>
+                        <div class="border-t border-gray-700 pt-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Canais e Ações</h3>
+                            <div class="space-y-4">
+                                <p><strong>Website / Landing Page:</strong> Ponto central da campanha. Deve conter: tema, palestrantes confirmados, agenda detalhada, proposta de valor, depoimentos e CTAs claros para inscrição na e-inscrição.</p>
+                                <p><strong>Redes Sociais (Instagram & LinkedIn):</strong><br>
+                                    <span class="text-gray-400">- <strong>T-4 Semanas (Aquecimento):</strong> Posts sobre o problema que o tema resolve, enquetes, anúncio da data.</span><br>
+                                    <span class="text-gray-400">- <strong>T-3 a T-1 (Lançamento):</strong> Revelação dos palestrantes, vídeos curtos, cards com frases de impacto, prova social, abertura do lote promocional.</span><br>
+                                    <span class="text-gray-400">- <strong>Última Semana (Urgência):</strong> Contagem regressiva, posts de "últimas vagas", bastidores da montagem.</span>
+                                </p>
+                                <p><strong>Anúncios Pagos (Meta & Google Ads):</strong><br>
+                                    <span class="text-gray-400">- <strong>Públicos:</strong> Remarketing do site, lookalike de compradores, segmentação por cargos e interesses.</span><br>
+                                    <span class="text-gray-400">- <strong>Criativos:</strong> Vídeos dos palestrantes, carrosséis de benefícios, imagens de impacto com o CTA principal.</span>
+                                </p>
+                                <p><strong>Email Marketing:</strong> Fluxo de nutrição com e-mails de anúncio, aprofundamento do tema, apresentação dos palestrantes, abertura de lotes e última chamada.</p>
+                                <p><strong>Parcerias:</strong> Contato com influenciadores de nicho e associações comerciais para ampliar o alcance da divulgação.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 4: FUNÇÕES DO STAFF -->
             <div id="staff" class="tab-content">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Coord. de Produção</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Orquestrar todas as equipes e fornecedores. <br><strong>Atuação:</strong> Chega às 07:00, lidera o briefing geral, supervisiona todas as áreas e coordena a desmontagem.</p></div>
@@ -251,7 +282,7 @@
                 </div>
             </div>
 
-            <!-- ABA 4: JORNADAS -->
+            <!-- ABA 5: JORNADAS -->
             <div id="jornadas" class="tab-content">
                 <div class="space-y-6">
                     <div class="card p-8">
@@ -286,7 +317,7 @@
                 </div>
             </div>
 
-            <!-- ABA 5: ROTEIROS & COMUNICAÇÃO -->
+            <!-- ABA 6: ROTEIROS & COMUNICAÇÃO -->
             <div id="roteiros" class="tab-content">
                  <div class="card p-8">
                     <h2 class="text-3xl font-bold text-highlight mb-6">Modelos de Comunicação</h2>
@@ -325,12 +356,12 @@
                 </div>
             </div>
 
-            <!-- ABA 6: CHECKLISTS -->
+            <!-- ABA 7: CHECKLISTS -->
             <div id="checklists" class="tab-content">
                 <div class="card p-8"><h2 class="text-3xl font-bold text-highlight mb-6">Checklist Geral de Recursos</h2><div class="overflow-x-auto"><table><thead><tr><th>Categoria</th><th>Item</th><th>Detalhes/Observações</th></tr></thead><tbody><tr><td>Documentos</td><td>Contratos com Fornecedores</td><td>Local, A&B, AV, Segurança, etc.</td></tr><tr><td>Documentos</td><td>Contratos com Palestrantes</td><td>Cachê, direitos de imagem, logística.</td></tr><tr><td>Equipamentos</td><td>Sistema de Audiovisual</td><td>2 Telas, projetores, som, microfones.</td></tr><tr><td>Equipamentos</td><td>Microfone-cubo</td><td>Para interação com a plateia.</td></tr><tr><td>Equipamentos</td><td>Rádios de Comunicação</td><td>Para toda a equipe de produção.</td></tr><tr><td>Pessoas (Staff)</td><td>Mestre de Cerimônias (MC)</td><td>Contratar profissional carismático.</td></tr><tr><td>Pessoas (Staff)</td><td>Equipe de Apoio (Freelancer)</td><td>Credenciamento, suporte, facilitador.</td></tr><tr><td>Materiais</td><td>Crachás e Kits VIP</td><td>Design, impressão e montagem.</td></tr><tr><td>Materiais</td><td>Sinalização</td><td>Banners, totens e direcionamento.</td></tr><tr><td>Outros</td><td>Fornecedor de A&B</td><td>Welcome coffee, break, almoço VIP.</td></tr><tr><td>Outros</td><td>Conexão de Internet</td><td>Link dedicado e de alta velocidade.</td></tr></tbody></table></div></div>
             </div>
             
-            <!-- ABA 7: FINANCEIRO -->
+            <!-- ABA 8: FINANCEIRO -->
             <div id="financeiro" class="tab-content">
                 <div class="space-y-8">
                     <!-- Pacotes de Patrocínio -->
