@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Operacional - Summit Series</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Importação e configuração da fonte Poppins */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #06192a;
+            color: #ffffff;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+        }
+
+        /* Estilo dos cards, seguindo o guia da Live */
+        .card {
+            background-color: #0A243D;
+            border-radius: 12px;
+            border: 1px solid #ffffff20;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 232, 0, 0.1);
+        }
+
+        /* Destaque verde vibrante para títulos e elementos interativos */
+        .text-highlight {
+            color: #00e800;
+            text-shadow: 0 0 8px rgba(0, 232, 0, 0.7);
+        }
+
+        /* Estilo para as abas de navegação */
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-button.active {
+            color: #00e800;
+            border-bottom-color: #00e800;
+            transform: translateY(-2px);
+        }
+        
+        .tab-button:not(.active):hover {
+            color: #00e800;
+            background-color: #0A243D30;
+        }
+
+        /* Animação de entrada suave para o conteúdo */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Estilo para a fonte Merriweather em seções específicas */
+        .font-serif {
+            font-family: 'Merriweather', serif;
+        }
+        
+        /* Estilo para a timeline */
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+            padding-left: 2.5rem;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 2px;
+            height: 100%;
+            background-color: #00e800;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #06192a;
+            border: 3px solid #00e800;
+        }
+        .timeline-item ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .timeline-item li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #a0aeco;
+        }
+        .timeline-item li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00e800;
+            font-weight: bold;
+        }
+        
+        /* Estilo para tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ffffff20;
+        }
+        th {
+            color: #00e800;
+            font-weight: 600;
+        }
+        tbody tr:hover {
+            background-color: #0A243D80;
+        }
+        td ul {
+            margin: 0;
+            padding-left: 1rem;
+        }
+        td li {
+            padding-bottom: 0.25rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Cabeçalho Fixo -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/50 backdrop-blur-sm shadow-lg">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-36.png" alt="Logo Live" class="h-10">
+            <h1 class="text-xl font-bold text-highlight">Manual Operacional | Summit Series</h1>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-24 pb-12">
+        
+        <!-- Navegação por Abas -->
+        <div class="mb-8 border-b border-gray-700">
+            <nav class="flex flex-wrap -mb-px space-x-4">
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300 active" onclick="showTab('visaoGeral')">Visão Geral</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('timeline')">Linha do Tempo</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('staff')">Funções do Staff</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('jornadas')">Jornadas</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('roteiros')">Roteiros & Comunicação</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('checklists')">Checklists</button>
+                <button class="tab-button text-lg font-semibold py-4 px-2 text-gray-300" onclick="showTab('financeiro')">Financeiro</button>
+            </nav>
+        </div>
+
+        <!-- Conteúdo das Abas -->
+        <div id="tab-content-container">
+            <!-- ABA 1: VISÃO GERAL -->
+            <div id="visaoGeral" class="tab-content active">
+                <div class="card p-8">
+                    <h2 class="text-3xl font-bold text-highlight mb-4">A Orquestra do Sucesso: A Filosofia do Summit</h2>
+                    <p class="text-gray-300 leading-relaxed font-serif">
+                        Todo grande evento começa com uma visão: criar um ecossistema mensal onde empreendedores se conectam, aprendem e crescem. Este manual é a nossa partitura, o guia detalhado que garante que cada membro da nossa orquestra saiba exatamente sua hora de brilhar. Nosso objetivo não é apenas realizar um evento, mas entregar uma experiência transformadora, onde cada detalhe, da recepção ao pós-evento, é executado com maestria. A excelência está na sincronia de nossas ações, e este documento é a chave para alcançá-la em todas as 12 edições.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ABA 2: LINHA DO TEMPO MESTRA -->
+            <div id="timeline" class="tab-content">
+                <div class="card p-8">
+                    <h2 class="text-3xl font-bold text-highlight mb-6">Linha do Tempo Mestra: De T-6 Semanas a D+7 Dias</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-xl text-white">Fase 1: Planejamento Estratégico (T-6 a T-4 Semanas)</h3>
+                            <ul class="mt-2 space-y-1">
+                                <li><strong>[Diretor]</strong> Define o macro-tema do mês e a lista inicial de palestrantes.</li>
+                                <li><strong>[Comercial]</strong> Inicia a prospecção de patrocinadores Ouro, alinhados ao tema.</li>
+                                <li><strong>[Produção]</strong> Realiza a cotação de locais e principais fornecedores (AV, A&B).</li>
+                                <li><strong>[Marketing]</strong> Começa a pesquisar o público-alvo e a preparar o terreno para a campanha.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-xl text-white">Fase 2: Marketing e Vendas (T-4 a T-1 Semanas)</h3>
+                             <ul class="mt-2 space-y-1">
+                                <li><strong>[Marketing]</strong> Lança a campanha de divulgação nas redes sociais e e-mail. Inicia tráfego pago.</li>
+                                <li><strong>[Produção]</strong> Configura a plataforma e-inscrição com os lotes (Promocional, 1º, 2º, VIP).</li>
+                                <li><strong>[Comercial]</strong> Intensifica negociações e fecha contratos com patrocinadores.</li>
+                                <li><strong>[Diretor]</strong> Confirma palestrantes e alinha o conteúdo macro das apresentações.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-xl text-white">Fase 3: Operações e Logística (T-2 Semanas a D-1)</h3>
+                            <ul class="mt-2 space-y-1">
+                                <li><strong>[Produção]</strong> Fecha contratos com todos os fornecedores. Gerencia a logística (passagens, hotel) dos palestrantes. Recebe e aprova materiais de patrocinadores.</li>
+                                <li><strong>[Marketing]</strong> Inicia a comunicação de "esquenta" com os inscritos via e-mail e prepara as mensagens de WhatsApp.</li>
+                                <li><strong>[Diretor]</strong> Realiza o briefing final com palestrantes e MC, alinhando roteiros e ganchos para pitches.</li>
+                                <li><strong>[Produção]</strong> No D-1, acompanha a montagem da estrutura de palco e stands.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-xl text-highlight">Dia D: Execução do Evento</h3>
+                            <ul class="mt-2 space-y-1">
+                                <li><strong>[Toda a Equipe]</strong> Briefing geral às 07:45. Todos em suas posições.</li>
+                                <li><strong>[Produção]</strong> Supervisiona a execução impecável de todos os cronogramas (credenciamento, breaks, palestras).</li>
+                                <li><strong>[Marketing]</strong> Realiza a cobertura em tempo real nas redes sociais (fotos, stories).</li>
+                                <li><strong>[Comercial]</strong> Dá suporte aos patrocinadores e facilita conexões estratégicas.</li>
+                            </ul>
+                        </div>
+                        <div class="timeline-item">
+                            <h3 class="font-bold text-xl text-white">Fase 4: Pós-Evento (D+1 a D+7)</h3>
+                            <ul class="mt-2 space-y-1">
+                                <li><strong>[Marketing]</strong> D+1: Dispara e-mail de agradecimento com link para a pesquisa de satisfação.</li>
+                                <li><strong>[Produção]</strong> D+3: Disponibiliza link para fotos e materiais autorizados.</li>
+                                <li><strong>[Comercial]</strong> D+5: Envia relatório de resultados para os patrocinadores.</li>
+                                <li><strong>[Diretor]</strong> D+7: Conduz a reunião de debriefing com a equipe para análise e melhorias.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 3: FUNÇÕES DO STAFF -->
+            <div id="staff" class="tab-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Coord. de Produção</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Orquestrar todas as equipes e fornecedores. <br><strong>Atuação:</strong> Chega às 07:00, lidera o briefing geral, supervisiona todas as áreas e coordena a desmontagem.</p></div>
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Credenciamento</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Ser a primeira impressão positiva do evento. <br><strong>Atuação:</strong> Inicia às 07:30 para setup. Credenciamento das 08:00 às 09:15. Check-in rápido e cordial.</p></div>
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">A&B (Buffet)</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Garantir pausas energizantes e agradáveis. <br><strong>Atuação:</strong> Welcome coffee pronto às 08:30. Montagem dos breaks 15 min antes. Reposição constante.</p></div>
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Limpeza</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Manter o ambiente impecável. <br><strong>Atuação:</strong> Atua nos intervalos para organizar a plenária e manter banheiros limpos. Ronda constante.</p></div>
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Staff de Apoio</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Ser o ponto de ajuda e informação. <br><strong>Atuação:</strong> Orienta participantes, tira dúvidas e gerencia o microfone-cubo nas sessões de Q&A.</p></div>
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Suporte ao Palestrante</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Proporcionar uma experiência VIP ao palestrante. <br><strong>Atuação:</strong> Recepciona, acompanha à sala VIP, passa o microfone e faz o briefing final 30 min antes.</p></div>
+                    <div class="card p-6"><h3 class="text-xl font-bold text-highlight mb-2">Produtor de Palco</h3><p class="text-gray-400 text-sm"><strong>Missão:</strong> Garantir a fluidez e o tempo do cronograma. <br><strong>Atuação:</strong> Fica nos bastidores, controla o tempo, sinaliza o MC e coordena as entradas e saídas do palco.</p></div>
+                </div>
+            </div>
+
+            <!-- ABA 4: JORNADAS -->
+            <div id="jornadas" class="tab-content">
+                <div class="space-y-6">
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-bold text-highlight mb-3">A Jornada do Participante</h3>
+                        <p class="text-gray-300 font-serif"><strong>Descoberta:</strong> É impactado por um anúncio ou conteúdo relevante que resolve uma dor. <strong>Inscrição:</strong> Realiza uma compra fácil na e-inscrição, com clareza sobre os benefícios (Padrão vs. VIP). <strong>Aquecimento:</strong> Recebe comunicações pré-evento (e-mail, WhatsApp) que aumentam sua expectativa. <strong>Dia do Evento:</strong> Experiencia um credenciamento ágil, conteúdo de alto nível, networking facilitado e interação dinâmica. <strong>Pós-Evento:</strong> É nutrido com materiais, fotos e pesquisa de satisfação, fortalecendo o laço e o interesse em futuras edições.</p>
+                    </div>
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-bold text-highlight mb-3">A Jornada do Patrocinador</h3>
+                        <p class="text-gray-300 font-serif"><strong>Prospecção:</strong> Recebe uma proposta de valor clara, focada no "pitch contextual" e no público qualificado. <strong>Onboarding:</strong> Após fechar o contrato, recebe um guia com todas as orientações logísticas e de preparação do pitch. <strong>Pré-Evento:</strong> Sua marca é divulgada nos materiais da campanha. <strong>Dia do Evento:</strong> Tem um stand bem localizado e seu pitch é integrado de forma inteligente ao conteúdo, gerando máxima atenção e credibilidade. <strong>Pós-Evento:</strong> Recebe um relatório detalhado de ROI, comprovando o sucesso do investimento e abrindo portas para renovação.</p>
+                    </div>
+                    <div class="card p-8">
+                        <h3 class="text-2xl font-bold text-highlight mb-3">A Jornada do Palestrante</h3>
+                        <p class="text-gray-300 font-serif"><strong>Convite:</strong> É convidado com base em sua expertise e alinhamento com o tema, recebendo um briefing profissional. <strong>Preparação:</strong> Tem sua logística (viagem, hospedagem) totalmente gerenciada pela produção. Recebe orientações claras sobre o conteúdo e a dinâmica. <strong>Dia do Evento:</strong> É recebido por um suporte dedicado, tem uma sala VIP para se concentrar, e sobe em um palco com estrutura impecável para entregar sua mensagem com impacto. <strong>Pós-Evento:</strong> Recebe o feedback do público e o material fotográfico de sua participação, fortalecendo sua marca pessoal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 5: ROTEIROS & COMUNICAÇÃO -->
+            <div id="roteiros" class="tab-content">
+                 <div class="card p-8">
+                    <h2 class="text-3xl font-bold text-highlight mb-6">Modelos de Comunicação</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Roteiro de Abertura (MC)</h4>
+                             <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
+                                <p class="text-gray-400 text-sm">"Bom dia, mentes brilhantes! Sejam todos muito bem-vindos à [Número]ª edição do Summit Series! Nossa missão aqui hoje é clara: conectar vocês às ideias e pessoas que vão acelerar seus negócios. O tema de hoje, [Tema do Mês], foi escolhido a dedo para atacar os desafios que vocês enfrentam no dia a dia. E para nos guiar, temos os palestrantes [Nome do Palestrante 1] e [Nome do Palestrante 2], que são referências no assunto. Tudo isso só é possível graças aos nossos patrocinadores, como a [Nome do Patrocinador Ouro], que não está aqui por acaso: a solução deles se conecta diretamente ao nosso tema. Preparem-se, pois o dia de hoje será um divisor de águas!"</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Mensagens de WhatsApp</h4>
+                            <div class="space-y-4">
+                                <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
+                                    <p class="text-gray-400 text-sm"><strong>(3 Dias Antes)</strong><br>Olá, [Nome]! Faltam 3 dias para o nosso Summit! 🚀 Já estamos preparando tudo para uma experiência incrível. Lembre-se: o evento acontece no [Local], a partir das 08:00. Até breve!</p>
+                                </div>
+                                <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
+                                    <p class="text-gray-400 text-sm"><strong>(1 Dia Antes)</strong><br>É amanhã! 🎉 Estamos ansiosos para te receber no Summit [Tema do Mês]. O credenciamento começa às 08:00 no [Endereço Completo]. Tenha o QR Code do seu ingresso em mãos para agilizar a entrada. <br><strong>VIPs:</strong> Lembrem-se que o almoço com os palestrantes será em uma área exclusiva. Daremos as instruções no local. <br>Até amanhã!</p>
+                                </div>
+                                <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
+                                    <p class="text-gray-400 text-sm"><strong>(Dia do Evento - 07:00)</strong><br>O grande dia chegou! ☀️ O Summit Series começa em 1 hora. Estamos te esperando no [Local] para um dia de muito conteúdo e networking. Se tiver qualquer dúvida, procure alguém da nossa equipe com a camiseta do evento. Vamos fazer história juntos!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-white mb-2">Email de Pesquisa de Satisfação (D+1)</h4>
+                             <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
+                                <p class="text-gray-400 text-sm"><strong>Assunto:</strong> Sua opinião é importante para nós! Summit [Tema do Mês]</p>
+                                <p class="text-gray-400 text-sm mt-2">Olá, [Nome],<br>Esperamos que você tenha aproveitado o Summit tanto quanto nós! Para continuarmos melhorando, gostaríamos de ouvir sua opinião. Leva apenas 2 minutos.<br><br><strong>[LINK PARA O FORMULÁRIO DA PESQUISA]</strong><br><br>Seu feedback é o nosso guia para as próximas edições. Muito obrigado!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABA 6: CHECKLISTS -->
+            <div id="checklists" class="tab-content">
+                <div class="card p-8"><h2 class="text-3xl font-bold text-highlight mb-6">Checklist Geral de Recursos</h2><div class="overflow-x-auto"><table><thead><tr><th>Categoria</th><th>Item</th><th>Detalhes/Observações</th></tr></thead><tbody><tr><td>Documentos</td><td>Contratos com Fornecedores</td><td>Local, A&B, AV, Segurança, etc.</td></tr><tr><td>Documentos</td><td>Contratos com Palestrantes</td><td>Cachê, direitos de imagem, logística.</td></tr><tr><td>Equipamentos</td><td>Sistema de Audiovisual</td><td>2 Telas, projetores, som, microfones.</td></tr><tr><td>Equipamentos</td><td>Microfone-cubo</td><td>Para interação com a plateia.</td></tr><tr><td>Equipamentos</td><td>Rádios de Comunicação</td><td>Para toda a equipe de produção.</td></tr><tr><td>Pessoas (Staff)</td><td>Mestre de Cerimônias (MC)</td><td>Contratar profissional carismático.</td></tr><tr><td>Pessoas (Staff)</td><td>Equipe de Apoio (Freelancer)</td><td>Credenciamento, suporte, facilitador.</td></tr><tr><td>Materiais</td><td>Crachás e Kits VIP</td><td>Design, impressão e montagem.</td></tr><tr><td>Materiais</td><td>Sinalização</td><td>Banners, totens e direcionamento.</td></tr><tr><td>Outros</td><td>Fornecedor de A&B</td><td>Welcome coffee, break, almoço VIP.</td></tr><tr><td>Outros</td><td>Conexão de Internet</td><td>Link dedicado e de alta velocidade.</td></tr></tbody></table></div></div>
+            </div>
+            
+            <!-- ABA 7: FINANCEIRO -->
+            <div id="financeiro" class="tab-content">
+                <div class="space-y-8">
+                    <!-- Pacotes de Patrocínio -->
+                    <div class="card p-8">
+                        <h2 class="text-2xl font-bold text-highlight mb-6">Pacotes para Anunciantes e Patrocinadores</h2>
+                        <div class="overflow-x-auto">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Cota</th>
+                                        <th>Investimento (R$)</th>
+                                        <th>Entregas / Benefícios</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="font-bold">Ouro (Master)</td>
+                                        <td>12.000,00</td>
+                                        <td>
+                                            <ul>
+                                                <li>✓ Pitch contextual de 2 minutos no palco</li>
+                                                <li>✓ Stand em local premium (3x2m)</li>
+                                                <li>✓ Logo em destaque em todo material (site, e-mail, palco)</li>
+                                                <li>✓ 4 Ingressos VIP</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold">Prata (Apoiador)</td>
+                                        <td>7.000,00</td>
+                                        <td>
+                                            <ul>
+                                                <li>✓ Stand em área de networking (2x2m)</li>
+                                                <li>✓ Logo nos materiais de divulgação e palco</li>
+                                                <li>✓ Menção de agradecimento do MC</li>
+                                                <li>✓ 2 Ingressos VIP</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-bold">Bronze (Anunciante)</td>
+                                        <td>3.000,00</td>
+                                        <td>
+                                            <ul>
+                                                <li>✓ Logo nos materiais digitais (site, e-mail)</li>
+                                                <li>✓ Inserção de material na pasta/kit do participante</li>
+                                                <li>✓ 2 Ingressos Padrão</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Grid para Ingressos e Custos -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="card p-8">
+                            <h2 class="text-2xl font-bold text-highlight mb-6">Precificação de Ingressos (Base)</h2>
+                            <div class="overflow-x-auto">
+                                <table>
+                                    <thead><tr><th>Categoria</th><th>Valor (R$)</th><th>Observações</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Lote Promocional</td><td>197,00</td><td>Primeiros 50 ingressos ou 7 dias.</td></tr>
+                                        <tr><td>1º Lote</td><td>247,00</td><td>Até T-2 semanas.</td></tr>
+                                        <tr><td>2º Lote</td><td>297,00</td><td>Últimas 2 semanas.</td></tr>
+                                        <tr><td>Ingresso VIP</td><td>497,00</td><td>Lote único, limitado a 20 vagas.</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="card p-8">
+                            <h2 class="text-2xl font-bold text-highlight mb-6">Previsão de Custos (Edição Padrão)</h2>
+                            <div class="overflow-x-auto">
+                                <table>
+                                    <thead><tr><th>Categoria</th><th>Valor Estimado (R$)</th><th>Observações</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Local e Estrutura</td><td>8.000,00</td><td>Aluguel, palco, iluminação.</td></tr>
+                                        <tr><td>A&B (Buffet)</td><td>6.000,00</td><td>Baseado em 150 participantes.</td></tr>
+                                        <tr><td>Palestrantes</td><td>10.000,00</td><td>Cachê + logística.</td></tr>
+                                        <tr><td>Marketing e Mídia</td><td>3.500,00</td><td>Tráfego pago e ferramentas.</td></tr>
+                                        <tr><td>Staff e Freelancers</td><td>2.500,00</td><td>MC, produtores, apoio.</td></tr>
+                                        <tr><td>Outros</td><td>1.500,00</td><td>Gráfica, brindes, imprevistos.</td></tr>
+                                        <tr><td class="font-bold">TOTAL ESTIMADO</td><td class="font-bold">31.500,00</td><td></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-black mt-12">
+        <div class="container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-4 md:mb-0">
+                <img src="https://raw.githubusercontent.com/Clebito2/layout/main/Logo%20live%20oficial-34.png" alt="Logo Live Positivo" class="h-12 mx-auto md:mx-0">
+                <p class="text-gray-500 mt-2">Ecossistema Live | Conectando Mentes, Gerando Resultados.</p>
+            </div>
+            <div>
+                <p class="text-gray-400">cleberdonato@ecossistemalive.com.br</p>
+                <p class="text-gray-400">(61) 99699-3134</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Função para alternar entre as abas
+        function showTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            const activeButton = document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`);
+            activeButton.classList.add('active');
+        }
+    </script>
+</body>
+</html>
