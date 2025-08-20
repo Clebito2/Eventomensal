@@ -147,7 +147,7 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased min-h-screen flex flex-col">
 
     <!-- Cabeçalho Fixo -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/50 backdrop-blur-sm shadow-lg">
@@ -157,7 +157,7 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 pt-24 pb-12">
+    <main class="container mx-auto px-6 pt-24 pb-12 flex-grow">
         
         <!-- Navegação por Abas -->
         <div class="mb-8 border-b border-gray-700">
@@ -256,15 +256,32 @@
                 <div class="space-y-6">
                     <div class="card p-8">
                         <h3 class="text-2xl font-bold text-highlight mb-3">A Jornada do Participante</h3>
-                        <p class="text-gray-300 font-serif"><strong>Descoberta:</strong> É impactado por um anúncio ou conteúdo relevante que resolve uma dor. <strong>Inscrição:</strong> Realiza uma compra fácil na e-inscrição, com clareza sobre os benefícios (Padrão vs. VIP). <strong>Aquecimento:</strong> Recebe comunicações pré-evento (e-mail, WhatsApp) que aumentam sua expectativa. <strong>Dia do Evento:</strong> Experiencia um credenciamento ágil, conteúdo de alto nível, networking facilitado e interação dinâmica. <strong>Pós-Evento:</strong> É nutrido com materiais, fotos e pesquisa de satisfação, fortalecendo o laço e o interesse em futuras edições.</p>
+                        <div class="text-gray-300 font-serif space-y-2">
+                            <p><strong>Descoberta:</strong> É impactado por um anúncio ou conteúdo relevante que resolve uma dor.</p>
+                            <p><strong>Inscrição:</strong> Realiza uma compra fácil na e-inscrição, com clareza sobre os benefícios (Padrão vs. VIP).</p>
+                            <p><strong>Aquecimento:</strong> Recebe comunicações pré-evento (e-mail, WhatsApp) que aumentam sua expectativa.</p>
+                            <p><strong>Dia do Evento:</strong> Experiencia um credenciamento ágil, conteúdo de alto nível, networking facilitado e interação dinâmica.</p>
+                            <p><strong>Pós-Evento:</strong> É nutrido com materiais, fotos e pesquisa de satisfação, fortalecendo o laço e o interesse em futuras edições.</p>
+                        </div>
                     </div>
                     <div class="card p-8">
                         <h3 class="text-2xl font-bold text-highlight mb-3">A Jornada do Patrocinador</h3>
-                        <p class="text-gray-300 font-serif"><strong>Prospecção:</strong> Recebe uma proposta de valor clara, focada no "pitch contextual" e no público qualificado. <strong>Onboarding:</strong> Após fechar o contrato, recebe um guia com todas as orientações logísticas e de preparação do pitch. <strong>Pré-Evento:</strong> Sua marca é divulgada nos materiais da campanha. <strong>Dia do Evento:</strong> Tem um stand bem localizado e seu pitch é integrado de forma inteligente ao conteúdo, gerando máxima atenção e credibilidade. <strong>Pós-Evento:</strong> Recebe um relatório detalhado de ROI, comprovando o sucesso do investimento e abrindo portas para renovação.</p>
+                        <div class="text-gray-300 font-serif space-y-2">
+                            <p><strong>Prospecção:</strong> Recebe uma proposta de valor clara, focada no "pitch contextual" e no público qualificado.</p>
+                            <p><strong>Onboarding:</strong> Após fechar o contrato, recebe um guia com todas as orientações logísticas e de preparação do pitch.</p>
+                            <p><strong>Pré-Evento:</strong> Sua marca é divulgada nos materiais da campanha.</p>
+                            <p><strong>Dia do Evento:</strong> Tem um stand bem localizado e seu pitch é integrado de forma inteligente ao conteúdo, gerando máxima atenção e credibilidade.</p>
+                            <p><strong>Pós-Evento:</strong> Recebe um relatório detalhado de ROI, comprovando o sucesso do investimento e abrindo portas para renovação.</p>
+                        </div>
                     </div>
                     <div class="card p-8">
                         <h3 class="text-2xl font-bold text-highlight mb-3">A Jornada do Palestrante</h3>
-                        <p class="text-gray-300 font-serif"><strong>Convite:</strong> É convidado com base em sua expertise e alinhamento com o tema, recebendo um briefing profissional. <strong>Preparação:</strong> Tem sua logística (viagem, hospedagem) totalmente gerenciada pela produção. Recebe orientações claras sobre o conteúdo e a dinâmica. <strong>Dia do Evento:</strong> É recebido por um suporte dedicado, tem uma sala VIP para se concentrar, e sobe em um palco com estrutura impecável para entregar sua mensagem com impacto. <strong>Pós-Evento:</strong> Recebe o feedback do público e o material fotográfico de sua participação, fortalecendo sua marca pessoal.</p>
+                        <div class="text-gray-300 font-serif space-y-2">
+                            <p><strong>Convite:</strong> É convidado com base em sua expertise e alinhamento com o tema, recebendo um briefing profissional.</p>
+                            <p><strong>Preparação:</strong> Tem sua logística (viagem, hospedagem) totalmente gerenciada pela produção.</p>
+                            <p><strong>Dia do Evento:</strong> É recebido por um suporte dedicado, tem uma sala VIP para se concentrar, e sobe em um palco com estrutura impecável para entregar sua mensagem com impacto.</p>
+                            <p><strong>Pós-Evento:</strong> Recebe o feedback do público e o material fotográfico de sua participação, fortalecendo sua marca pessoal.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -291,6 +308,9 @@
                                 </div>
                                 <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
                                     <p class="text-gray-400 text-sm"><strong>(Dia do Evento - 07:00)</strong><br>O grande dia chegou! ☀️ O Summit Series começa em 1 hora. Estamos te esperando no [Local] para um dia de muito conteúdo e networking. Se tiver qualquer dúvida, procure alguém da nossa equipe com a camiseta do evento. Vamos fazer história juntos!</p>
+                                </div>
+                                <div class="p-4 border border-dashed border-gray-600 rounded-lg bg-black/20">
+                                    <p class="text-gray-400 text-sm"><strong>(Dia do Evento - 18:00)</strong><br>Que dia incrível! Agradecemos imensamente sua presença no Summit. Esperamos que tenha sido transformador! Fique de olho em seu e-mail para receber as fotos e a pesquisa de satisfação. Siga-nos no Instagram [@seu_instagram] para não perder as novidades da próxima edição!</p>
                                 </div>
                             </div>
                         </div>
